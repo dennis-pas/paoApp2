@@ -21,27 +21,34 @@ Products.prototype.importOverview = function() {
 							    
 							    var newVersion = itemVersionCheck.item(0).getElementsByTagName("Versie").item(0).text;
 							    var newId = itemVersionCheck.item(0).getElementsByTagName("Versie").item(0).text;
-							//    var curVersion = curVersionArray[0].field(1);
+							    var curVersion;
 							
+								var arrayResults = [];
 								
-							    while (curVersionArray.isValidRow())
+							  	while (curVersionArray.isValidRow())
 							    {
-							    	Ti.API.info(" test  " + curVersionArray.fieldByName('versie'));
+							    	//Ti.API.info(" test  " + curVersionArray.fieldByName('versie'));
+							    	arrayResults.push(curVersionArray.fieldByName('versie'));
+							    	curVersion = curVersionArray.fieldByName('versie');
+							    	curVersionArray.next();
 							    }
-							   db.close();
-							    
-								      for (var i=0;i<items.length;i++) {  	
+							   	var test = "test";
+							   	var nNewVersion = parseInt(newVersion);
+							    if(curVersion != nNewVersion)
+							    {
+							    	db.execute('delete from Product where PID > -1;');
+							    	for (var i=0;i<items.length;i++) {  	
 											var ID = items.item(i).getElementsByTagName("ID").item(0).text;
 											var leverancier = items.item(i).getElementsByTagName("Leverancier").item(0).text;
 											var naam = items.item(i).getElementsByTagName("Naam").item(0).text;
 											var type = items.item(i).getElementsByTagName("Type").item(0).text;
 											var buyable = items.item(i).getElementsByTagName("Buyable").item(0).text;
 											var fotogrid = items.item(i).getElementsByTagName("Fotogrid").item(0).text;		
-											var db = Ti.Database.open('SqlPaoApp');
 											db.execute('INSERT INTO Product (Supplier, Name, Type, BuyAble, FotoGrid) VALUES("' + leverancier + '","' + naam  + '","' + type + '",' + buyable   + ',"' + fotogrid + '");');			  		
-											db.close();
 									    }
-					       
+									    db.execute('UPDATE VersieProduct set versie = ' + newVersion + ' where id = 1');
+									    db.close();
+							    }				       
 								    },
 								    onerror: function(e) {
 								        // this function is called when an error occurs, including a timeout
