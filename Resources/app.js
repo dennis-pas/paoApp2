@@ -63,5 +63,7 @@ if (Ti.version < 1.8) {
        Window = require('ui/handheld/android/ApplicationWindow');
      }
    }
+   
    new Window().open();
 })();
+

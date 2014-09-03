@@ -1,39 +1,28 @@
 function ApplicationWindow() {
 	//declare module dependencies
-	var MasterView = require('ui/common/MasterView'),
-		DetailView = require('ui/common/DetailView');
+	var MenuBarView = require('ui/common/MenuBarView');
 
 	//construct UI
-	var masterView = MasterView(),
-		detailView = DetailView();
+	var menuBarView = new MenuBarView();
 
-	//create master view container
-	var masterContainerWindow = Ti.UI.createWindow({
-		title:'Products',
-		stabBarHidden: Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT,
+	//create Menubarview container
+	var menuBarContainerWindow = Ti.UI.createWindow({
+		title:'PLAN@OFFICE',
+		//stabBarHidden: Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT,
 		fullscreen: true
 	});
-	masterContainerWindow.hideNavBar();
-	masterContainerWindow.add(masterView);
-
-	//create detail view container
-	var detailContainerWindow = Ti.UI.createWindow({
-		title:'Product Details'
-	});
-	detailContainerWindow.add(detailView);
-
-	//create iOS specific NavGroup UI
+	menuBarContainerWindow.hideNavBar();
+	menuBarContainerWindow.add(menuBarView);
+	
+	
+	//create iOS specific navGroupHome UI
 	var navGroup = Ti.UI.iOS.createNavigationWindow({
-		window:masterContainerWindow
-	});
-
-	//add behavior for master view
-	masterView.addEventListener('itemSelected', function(e) {
-		detailView.fireEvent('itemSelected',e);
-		navGroup.openWindow(detailContainerWindow);
-	});
-
+		window:menuBarContainerWindow
+		
+	});	
+		
 	return navGroup;
 };
+
 
 module.exports = ApplicationWindow;

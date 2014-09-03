@@ -24,10 +24,10 @@ Products.prototype.importOverview = function() {
 							//    var curVersion = curVersionArray[0].field(1);
 							
 								
-							    while (curVersionArray.isValidRow())
+							   /* while (curVersionArray.isValidRow())
 							    {
 							    	Ti.API.info(" test  " + curVersionArray.fieldByName('versie'));
-							    }
+							    }*/
 							   db.close();
 							    
 								      for (var i=0;i<items.length;i++) {  	
