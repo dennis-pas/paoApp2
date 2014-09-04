@@ -25,8 +25,8 @@ Products.prototype.importOverview = function() {
 							
 								var arrayResults = [];
 								
-
-							   db.close();
+								// gave error
+							   //db.close();
 							    
 							  	while (curVersionArray.isValidRow())
 							    {

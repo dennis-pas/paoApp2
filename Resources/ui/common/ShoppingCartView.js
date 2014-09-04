@@ -10,11 +10,12 @@ function ShoppingCartView() {
 		top: 88
 	});
 	
-	var text1 = Ti.UI.createLabel({
-		text: 'test voor de winkelwagen/vragenmandje view',
-	});
+	var ShoppingCartTableView = require('ui/common/shoppingCart/ShoppingCartTableView');
 	
-	self.add(text1);
+	var shoppingCartTableView = new ShoppingCartTableView();
+	
+	self.add(ShoppingCartTableView);
+	
 	
 	return self;
 };
