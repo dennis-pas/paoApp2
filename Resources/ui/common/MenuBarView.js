@@ -31,17 +31,17 @@ function MenuBarView() {
 	}
 	
 	//create settings img
-	var settings = Ti.UI.createLabel({
-		backgroundImage: '/ui/common/img/settings_icon.png',
-		width: 50,
-		height: 50,
+	var settings = Ti.UI.createImageView({
+		backgroundImage: '/ui/common/img/singletandwiel.png',
+		width: 40,
+		height: 40,
 	});
 	
 	//create shoppingcart img
 	var shoppingcart = Ti.UI.createLabel({
 		backgroundImage: '/ui/common/img/shoppingcart_icon.png',
-		width:50,
-		height: 50,
+		width:40,
+		height: 40,
 	});
 	//create Label label
 	var label = Ti.UI.createLabel({
@@ -56,6 +56,7 @@ function MenuBarView() {
 	var toolBar = Ti.UI.iOS.createToolbar({
 		items:[settings,label,shoppingcart,],
 		top:0,
+		left: -10,
 		borderTop:false,
 		borderBottom:false,
 		barColor: 'Black'
@@ -110,6 +111,7 @@ function MenuBarView() {
 	var toolBar2 = Ti.UI.iOS.createToolbar({
 		items:[home,producten,projecten,nieuws,info,],
 		top:theTopToolbar2,
+		left: -10,
 		bordertop:false,
 		borderBottom:true,
 		barColor: 'Black',

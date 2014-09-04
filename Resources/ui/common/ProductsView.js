@@ -12,13 +12,11 @@ function ProductsView(){
 		top: 88
 	});
 	
-	var ProductListView = require('ui/common/product/productListView');
+	var ProductTableView = require('ui/common/product/ProductTableView');
 	
-	var productListView = new ProductListView();
+	var productTableView = new ProductTableView();
 	
-	self.add(productListView);
-	
-	
+	self.add(productTableView);
 	
 	return self;
 };
