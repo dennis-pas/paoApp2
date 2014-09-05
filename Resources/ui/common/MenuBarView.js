@@ -135,8 +135,9 @@ function MenuBarView() {
 		productsView.visible = false;
 		projectsView.visible = false;
 		infoView.visible = false;
-		settingsView.visible = true;
+	//	settingsView.visible = true;
 		shoppingCartView.visible = false;		
+		settingsView.open({modal:true,modalTransitionStyle:Ti.UI.iPhone.MODAL_TRANSITION_STYLE_COVER_VERTICAL,modalStyle:Ti.UI.iPhone.MODAL_PRESENTATION_FULLSCREEN,navBarHidden:true});
 	});
 	//for shoppingcart - goes to shoppingcart
 	shoppingcart.addEventListener('click', function(e){	
@@ -145,7 +146,7 @@ function MenuBarView() {
 		productsView.visible = false;
 		projectsView.visible = false;
 		infoView.visible = false;
-		settingsView.visible = false;
+	//	settingsView.visible = false;
 		shoppingCartView.visible = true;	
 	});
 	//for producten - goes to producten
@@ -155,7 +156,7 @@ function MenuBarView() {
 		productsView.visible = true;
 		projectsView.visible = false;
 		infoView.visible = false;
-		settingsView.visible = false;
+	//	settingsView.visible = false;
 		shoppingCartView.visible = false;	
 	});
 	//for info - goes to info
@@ -165,7 +166,7 @@ function MenuBarView() {
 		productsView.visible = false;
 		projectsView.visible = false;
 		infoView.visible = true;
-		settingsView.visible = false;
+	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
 	});
 	//for news - goes to news
@@ -175,7 +176,7 @@ function MenuBarView() {
 		productsView.visible = false;
 		projectsView.visible = false;
 		infoView.visible = false;
-		settingsView.visible = false;
+	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
 	});
 	//for projecten - goes to projecten
@@ -185,7 +186,7 @@ function MenuBarView() {
 		productsView.visible = false;
 		projectsView.visible = true;
 		infoView.visible = false;
-		settingsView.visible = false;
+	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
 	});
 	//for home - goes to home
@@ -195,13 +196,13 @@ function MenuBarView() {
 		productsView.visible = false;
 		projectsView.visible = false;
 		infoView.visible = false;
-		settingsView.visible = false;
+	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
 	});
 	//add toolbars to view
 	
 	
-	self.add(SettingsView),
+	self.add(settingsView),
 	self.add(shoppingCartView),	
 	self.add(productsView);
 	self.add(infoView);
