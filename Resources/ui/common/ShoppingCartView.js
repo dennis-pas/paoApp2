@@ -13,7 +13,7 @@ function ShoppingCartView() {
 	
 	
 	var tableData = [];
-	var totaal;
+	var totaal = 0;
 	
 	var arr =	[	
 				{ID: 1,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'dit is vanuit de array1', prijs: 150},
@@ -43,9 +43,9 @@ function ShoppingCartView() {
 		
 		/*var calc = parseInt.thisObject.prijs;
 		
-		totaal = totaal + calc;*/
+		totaal = totaal + calc;
 		
-		/*var totaalprijs = Ti.UI.createLabel({
+		var totaalprijs = Ti.UI.createLabel({
 			text: totaal,
 			left: 275
 		});*/
