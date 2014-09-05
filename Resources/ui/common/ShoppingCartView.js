@@ -24,8 +24,8 @@ function ShoppingCartView() {
 				];
 
 	for(var i = 0; i < arr.length; ++i){
-		thisObject = arr[i];
-		
+		var thisObject = arr[i];
+		var prijs = thisObject.prijs;
 		var newRow = Ti.UI.createTableViewRow({
 			selectedBackgroundColor:'black'
 		});
@@ -41,17 +41,17 @@ function ShoppingCartView() {
 		});
 		
 		
-		/*var calc = parseInt.thisObject.prijs;
+		var calc = thisObject.prijs;
 		
 		totaal = totaal + calc;
 		
 		var totaalprijs = Ti.UI.createLabel({
 			text: totaal,
 			left: 275
-		});*/
+		});
 		
 		var prijs = Ti.UI.createLabel({
-			text: thisObject.prijs,
+			text: L(thisObject.prijs),
 			left: 225,
 			
 		});
@@ -59,107 +59,29 @@ function ShoppingCartView() {
 		newRow.add(img),
 		newRow.add(text),
 		newRow.add(prijs),
-		//newRow.add(totaalprijs),
+		newRow.add(totaalprijs),
 		tableData.push(newRow);
 		
-	}	
+	}
+	
+		
 	
 	
 	
-	var row1 = Ti.UI.createTableViewRow({
-		selectedBackgroundColor: 'black'
-	});
-	
-	var row2 = Ti.UI.createTableViewRow({
-		selectedBackgroundColor: 'black'
-	});
-	
-	var row3 = Ti.UI.createTableViewRow({
-		selectedBackgroundColor: 'black'
-	});
-	
-	var row4 = Ti.UI.createTableViewRow({
-		selectedBackgroundColor: 'black'
-	});
-	
-	var row5 = Ti.UI.createTableViewRow({
-		selectedBackgroundColor: 'black'
-	});
-	
-	var img1 = Ti.UI.createImageView({
-		image: 'ui/common/img/testbureaustoel.jpg',
-		left: 10
-	});
-	
-	var label1 = Ti.UI.createLabel({
-		text: 'dit is info van stoel 1',
-		left: 200
-	});
-	
-	var img2 = Ti.UI.createImageView({
-		image: 'ui/common/img/testbureaustoel.jpg',
-		left: 10
-	});
-	
-	var label2 = Ti.UI.createLabel({
-		text: 'dit is net wat andere info en van stoel 2',
-		left: 200
-	});
-	
-	var img3 = Ti.UI.createImageView({
-		image: 'ui/common/img/testbureaustoel.jpg',
-		left: 10
-	});
-	
-	var label3 = Ti.UI.createLabel({
-		text: 'stoel 3',
-		left: 200
-	});
-	
-	
-	var img4 = Ti.UI.createImageView({
-		image: 'ui/common/img/testbureaustoel.jpg',
-		left: 10
-	});
-	
-	var label4 = Ti.UI.createLabel({
-		text: 'info van stoel 4',
-		left: 200
-	});
-	
-	
-	var img5 = Ti.UI.createImageView({
-		image: 'ui/common/img/testbureaustoel.jpg',
-		left: 10
-	});
-	
-	var label5 = Ti.UI.createLabel({
-		text: 'hallo test',
-		left: 200
-	});
-	
-	row1.add(img1);
-	row1.add(label1);
-	row2.add(img2);
-	row2.add(label2);
-	row3.add(img3);
-	row3.add(label3);
-	row4.add(img4);
-	row4.add(label4);
-	row5.add(img5);
-	row5.add(label5);
-
-	//var tableData = [ row1, row2, row3, row4, row5 ];
 	var ShoppingCartTableView = require('ui/common/shoppingCart/ShoppingCartTableView');
+	var ShoppingCartButtonView = require('ui/common/shoppingCart/ShoppingCartButtonView');
 	
 	var shoppingCartTableView = new ShoppingCartTableView();
+	var shoppingCartButtonView = new ShoppingCartButtonView();
+	
+	
 	
 	shoppingCartTableView = Ti.UI.createTableView({
 			data: tableData
 	});
 	
 	self.add(shoppingCartTableView);
-	
+	self.add(shoppingCartButtonView);
 	
 	return self;
 };
