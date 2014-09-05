@@ -1,8 +1,8 @@
-#appname: paoapp2
-#publisher: sjoerdsprangers
-#url: http://
-#image: appicon.png
-#appid: pao.office.com
-#desc: undefined
-#type: ipad
-#guid: d29e3568-39f9-45eb-9735-64ec72396cbb
+#appname:paoapp2
+#publisher:sjoerdsprangers
+#url:http://
+#image:appicon.png
+#appid:plan.office.app
+#desc:undefined
+#type:ipad
+#guid:d29e3568-39f9-45eb-9735-64ec72396cbb
