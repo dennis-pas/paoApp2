@@ -12,6 +12,7 @@ function MenuBarView() {
 	//construct UI
 	var homeView = new HomeView();
 	var productsView = new ProductsView();
+	//goed view
 	var projectsView = new ProjectsView();
 	var newsView = new NewsView();
 	var infoView = new InfoView();
@@ -19,13 +20,28 @@ function MenuBarView() {
 	var settingsView = new SettingsView();
 	 
 	
+	var questionEmpty = true;
+	var shoppingEmpty = false;
+	
+	if (shoppingEmpty == true){
+		var shoppingcartimg = 'ui/common/img/shoppingcart_empty.png';
+	} else {
+		var shoppingcartimg = 'ui/common/img/shoppingcart_full.png';
+	}
+	
+	if (questionEmpty == true){
+		var questioncartimg = 'ui/common/img/questioncart_empty.png';
+	} else {
+		var questioncartimg = 'ui/common/img/questioncart_full.png';
+	}
+	
 	//create object instance, parasitic subclass of Observable
 	var self = Ti.UI.createView({
 		backgroundColor:'white',
 	});
 	
 	//settings for font
-	var customFont = 'Ftra-Bd';
+	var customFont = 'Futura Lt';
 	if(Ti.Platform.osname=='android'){
 		customFont = 'Futura-Lt';
 	}
@@ -33,28 +49,41 @@ function MenuBarView() {
 	//create settings img
 	var settings = Ti.UI.createImageView({
 		backgroundImage: '/ui/common/img/singletandwiel.png',
-		width: 40,
-		height: 40,
+		width: 20,
+		height: 20,
 	});
 	
 	//create shoppingcart img
 	var shoppingcart = Ti.UI.createLabel({
-		backgroundImage: '/ui/common/img/shoppingcart_icon.png',
-		width:40,
-		height: 40,
+		backgroundImage: shoppingcartimg,
+		width: 20,
+		height: 20,
 	});
 	//create Label label
 	var label = Ti.UI.createLabel({
 		text:'PLAN@OFFICE',
 		color: '#ffffff',
-		font: {fontfamily: customFont, fontSize: '25'},
+		font: {fontFamily: customFont, fontSize: '25'},
+		
+		left: '40%'
 	});
+	
+	//create QuestionCart img
+	var questionCart = Ti.UI.createImageView({
+		backgroundImage: questioncartimg,
+		width: 20,
+		height: 20,
+		right: 0,
+		left: '90%'
+	});
+	
+	
 	
 	
 	//create toolbar
 	//button bar top
 	var toolBar = Ti.UI.iOS.createToolbar({
-		items:[settings,label,shoppingcart,],
+		items:[settings,label,shoppingcart, questionCart],
 		top:0,
 		left: -10,
 		borderTop:false,
@@ -67,7 +96,7 @@ function MenuBarView() {
 	
 	//settings for position
 	var theTop = 0;
-	var theTopToolbar2 = 44;
+	var theTopToolbar2 = 42;
 	
 	
 	//creating second bar
@@ -202,8 +231,9 @@ function MenuBarView() {
 	//add toolbars to view
 	
 	
-	self.add(settingsView),
-	self.add(shoppingCartView),	
+
+	self.add(settingsView);
+	self.add(shoppingCartView);	
 	self.add(productsView);
 	self.add(infoView);
 	self.add(newsView); 
