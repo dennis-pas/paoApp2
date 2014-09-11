@@ -49,28 +49,32 @@ function MenuBarView() {
 	//create settings img
 	var settings = Ti.UI.createImageView({
 		backgroundImage: '/ui/common/img/singletandwiel.png',
-		width: 40,
-		height: 40,
+		width: 20,
+		height: 20,
 	});
 	
 	//create shoppingcart img
 	var shoppingcart = Ti.UI.createLabel({
 		backgroundImage: shoppingcartimg,
-		width:40,
-		height: 40,
+		width: 20,
+		height: 20,
 	});
 	//create Label label
 	var label = Ti.UI.createLabel({
 		text:'PLAN@OFFICE',
 		color: '#ffffff',
 		font: {fontFamily: customFont, fontSize: '25'},
+		
+		left: '40%'
 	});
 	
 	//create QuestionCart img
 	var questionCart = Ti.UI.createImageView({
 		backgroundImage: questioncartimg,
-		width:40,
-		height: 40,
+		width: 20,
+		height: 20,
+		right: 0,
+		left: '90%'
 	});
 	
 	

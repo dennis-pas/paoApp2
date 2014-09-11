@@ -13,19 +13,19 @@ function ShoppingCartView() {
 	
 	
 	var tableData = [];
-	var totaal = 0;
+	var total = 0;
 	
 	var arr =	[	
-				{ID: 1,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'dit is vanuit de array1', prijs: 150},
-				{ID: 2,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'dit is vanuit de array2', prijs: 200},
-				{ID: 3,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'dit is vanuit de array3', prijs: 250},
-				{ID: 4,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'dit is vanuit de array4', prijs: 100},
-				{ID: 5,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'dit is vanuit de array5', prijs: 175},
+				{ID: 1,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'Okamura CP', price: 680, quantity: 1},
+				{ID: 2,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'Okamura Contessa', price: 930, quantity: 1},
+				{ID: 3,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'Okamura Contessa', price: 1985, quantity: 1},
+				{ID: 4,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'Okamura Luce', price: 465, quantity: 1},
+				{ID: 5,imgurl: 'ui/common/img/testbureaustoel.jpg', text: 'Okamura Luce', price: 410, quantity: 1},
 				];
 
 	for(var i = 0; i < arr.length; ++i){
 		var thisObject = arr[i];
-		var prijs = thisObject.prijs;
+		var price = thisObject.price;
 		var newRow = Ti.UI.createTableViewRow({
 			selectedBackgroundColor:'black'
 		});
@@ -41,25 +41,24 @@ function ShoppingCartView() {
 		});
 		
 		
-		var calc = thisObject.prijs;
+		var calc = thisObject.price;
 		
-		totaal = totaal + calc;
+		total = total + calc;
 		
-		var totaalprijs = Ti.UI.createLabel({
-			text: totaal,
+		var totalprice = Ti.UI.createLabel({
+			text: total,
 			left: 275
 		});
 		
-		var prijs = Ti.UI.createLabel({
-			text: L(thisObject.prijs),
+		var price = Ti.UI.createLabel({
+			text: L(thisObject.price),
 			left: 225,
 			
 		});
 
 		newRow.add(img),
 		newRow.add(text),
-		newRow.add(prijs),
-		newRow.add(totaalprijs),
+		newRow.add(price),
 		tableData.push(newRow);
 		
 	}
@@ -71,14 +70,8 @@ function ShoppingCartView() {
 	var ShoppingCartTableView = require('ui/common/shoppingCart/ShoppingCartTableView');
 	var ShoppingCartButtonView = require('ui/common/shoppingCart/ShoppingCartButtonView');
 	
-	var shoppingCartTableView = new ShoppingCartTableView();
-	var shoppingCartButtonView = new ShoppingCartButtonView();
-	
-	
-	
-	shoppingCartTableView = Ti.UI.createTableView({
-			data: tableData
-	});
+	var shoppingCartTableView = new ShoppingCartTableView(tableData);
+	var shoppingCartButtonView = new ShoppingCartButtonView(total);
 	
 	self.add(shoppingCartTableView);
 	self.add(shoppingCartButtonView);
