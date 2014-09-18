@@ -12,7 +12,6 @@ function MenuBarView() {
 	//construct UI
 	var homeView = new HomeView();
 	var productsView = new ProductsView();
-	//goed view
 	var projectsView = new ProjectsView();
 	var newsView = new NewsView();
 	var infoView = new InfoView();
@@ -45,6 +44,8 @@ function MenuBarView() {
 	if(Ti.Platform.osname=='android'){
 		customFont = 'Futura-Lt';
 	}
+	
+	
 	
 	//create settings img
 	var settings = Ti.UI.createImageView({
@@ -83,7 +84,7 @@ function MenuBarView() {
 	//create toolbar
 	//button bar top
 	var toolBar = Ti.UI.iOS.createToolbar({
-		items:[settings,label,shoppingcart, questionCart],
+		items:[label,settings,questionCart,shoppingcart],
 		top:0,
 		left: -10,
 		borderTop:false,
@@ -102,7 +103,7 @@ function MenuBarView() {
 	//creating second bar
 	var home = Ti.UI.createLabel({
 		text:'Home',
-		color: '#fff',
+		color: '#ffffff',
 		font: {
 			fontFamily: customFont,
 			fontSize: 15
@@ -111,7 +112,7 @@ function MenuBarView() {
 	//create producten label
 	var producten = Ti.UI.createLabel({
 		text:'Producten',
-		color: '#ffffff',
+		color: '#505050',
 		font: {
 			fontFamily: customFont,
 			fontSize: 15},	
@@ -119,20 +120,20 @@ function MenuBarView() {
 	//create projecten label
 	var projecten = Ti.UI.createLabel({
 		text:'Projecten',
-		color: '#ffffff',
+		color: '#505050',
 		font: {
 			fontFamily: customFont, fontSize: '15'},
 	});
 	//create news label
 	var nieuws = Ti.UI.createLabel({
 		text:'Nieuws',
-		color: '#ffffff',
+		color: '#505050',
 		font: {fontFamily: customFont, fontSize: '15'},
 	});
 	//create info label
 	var info = Ti.UI.createLabel({
 		text:'Info',
-		color: '#ffffff',
+		color: '#505050',
 		font: {fontFamily: customFont, fontSize: '15'},
 	});
 	//create toolbar2
@@ -154,7 +155,13 @@ function MenuBarView() {
 		projectsView.visible = false;
 		infoView.visible = false;
 		settingsView.visible = false;
-		shoppingCartView.visible = false;		
+		shoppingCartView.visible = false;
+		home.color ='#ffffff';
+		producten.color ='#505050';
+		projecten.color ='#505050';
+		nieuws.color ='#505050';
+		info.color ='#505050';
+				
 	});
 	
 	//for settings - goes to settings
@@ -167,6 +174,11 @@ function MenuBarView() {
 	//	settingsView.visible = true;
 		shoppingCartView.visible = false;		
 		settingsView.open({modal:true,modalTransitionStyle:Ti.UI.iPhone.MODAL_TRANSITION_STYLE_COVER_VERTICAL,modalStyle:Ti.UI.iPhone.MODAL_PRESENTATION_FULLSCREEN,navBarHidden:true});
+		home.color ='#505050';
+		producten.color ='#505050';
+		projecten.color ='#505050';
+		nieuws.color ='#505050';
+		info.color ='#505050';
 	});
 	//for shoppingcart - goes to shoppingcart
 	shoppingcart.addEventListener('click', function(e){	
@@ -176,17 +188,30 @@ function MenuBarView() {
 		projectsView.visible = false;
 		infoView.visible = false;
 	//	settingsView.visible = false;
-		shoppingCartView.visible = true;	
+		shoppingCartView.visible = true;
+		home.color ='#505050';
+		producten.color ='#505050';
+		projecten.color ='#505050';
+		nieuws.color ='#505050';
+		info.color ='#505050';
 	});
 	//for producten - goes to producten
 	producten.addEventListener('click', function(e){
+		//var productsView = new ProductsView();
 		homeView.visible = false;
 		newsView.visible = false;
 		productsView.visible = true;
 		projectsView.visible = false;
 		infoView.visible = false;
 	//	settingsView.visible = false;
-		shoppingCartView.visible = false;	
+		shoppingCartView.visible = false;
+		Titanium.App.fireEvent('resetproducten', {name:'bar'});
+		home.color ='#505050';
+		producten.color ='#ffffff';
+		projecten.color ='#505050';
+		nieuws.color ='#505050';
+		info.color ='#505050';
+			
 	});
 	//for info - goes to info
 	info.addEventListener('click', function(e){
@@ -197,6 +222,11 @@ function MenuBarView() {
 		infoView.visible = true;
 	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
+		home.color ='#505050';
+		producten.color ='#505050';
+		projecten.color ='#505050';
+		nieuws.color ='#505050';
+		info.color ='#ffffff';
 	});
 	//for news - goes to news
 	nieuws.addEventListener('click', function(e){
@@ -207,6 +237,11 @@ function MenuBarView() {
 		infoView.visible = false;
 	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
+		home.color ='#505050';
+		producten.color ='#505050';
+		projecten.color ='#505050';
+		nieuws.color ='#ffffff';
+		info.color ='#505050';
 	});
 	//for projecten - goes to projecten
 	projecten.addEventListener('click', function(e){
@@ -217,6 +252,11 @@ function MenuBarView() {
 		infoView.visible = false;
 	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
+		home.color ='#505050';
+		producten.color ='#505050';
+		projecten.color ='#ffffff';
+		nieuws.color ='#505050';
+		info.color ='#505050';
 	});
 	//for home - goes to home
 	home.addEventListener('click', function(e){
@@ -227,6 +267,11 @@ function MenuBarView() {
 		infoView.visible = false;
 	//	settingsView.visible = false;
 		shoppingCartView.visible = false;
+		home.color ='#ffffff';
+		producten.color ='#505050';
+		projecten.color ='#505050';
+		nieuws.color ='#505050';
+		info.color ='#505050';
 	});
 	//add toolbars to view
 	

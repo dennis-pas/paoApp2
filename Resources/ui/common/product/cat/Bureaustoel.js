@@ -3,8 +3,9 @@
  */
 function Bureaustoel(){
 	
-	var self = Ti.UI.createWindow({
-		modal: true
+	var self = Ti.UI.createView({
+		modal: true,
+		
 	});
 	
 	var tableData = [];
@@ -14,12 +15,12 @@ function Bureaustoel(){
 
 	
 	var arr =	[	
-				{ID: 1,imgurl: 'ui/common/img/product/bureaustoel/2k8.jpg', name: '2k8',buyable: 1},
-				{ID: 2,imgurl: 'ui/common/img/product/bureaustoel/cuore.jpg', name: 'Cuore',buyable: 1, },
-				{ID: 3,imgurl: 'ui/common/img/product/bureaustoel/eben.jpg', name: 'Eben',buyable: 1, },
-				{ID: 4,imgurl: 'ui/common/img/product/bureaustoel/james.jpg', name: 'James',buyable: 1, },
-				{ID: 5,imgurl: 'ui/common/img/product/bureaustoel/sentis.jpg', name: 'Sentis',buyable: 1, },
-				{ID: 6,imgurl: 'ui/common/img/product/bureaustoel/visconte.jpg', name: 'Visconte',buyable: 0}
+				{ID: 1,imgurl: 'ui/common/img/product/bureaustoel/2k8.jpg', name: '2k8', buyable: 1},
+				{ID: 2,imgurl: 'ui/common/img/product/bureaustoel/cuore.jpg', name: 'Cuore', buyable: 1, },
+				{ID: 3,imgurl: 'ui/common/img/product/bureaustoel/eben.jpg', name: 'Eben', buyable: 1, },
+				{ID: 4,imgurl: 'ui/common/img/product/bureaustoel/james.jpg', name: 'James', buyable: 1, },
+				{ID: 5,imgurl: 'ui/common/img/product/bureaustoel/sentis.jpg', name: 'Sentis', buyable: 1, },
+				{ID: 6,imgurl: 'ui/common/img/product/bureaustoel/visconte.jpg', name: 'Visconte', buyable: 0}
 				];
 	
 	for(var i = 0; i < arr.length; ++i){
@@ -32,43 +33,55 @@ function Bureaustoel(){
 			width: 256
 		});
 		
-		var buyable = this.thisObject.buyable;
-		if(buyable == 1){
-			
-		}else{
-			
-		}
-		
 		newRow.name = this.thisObject.name;
 		
-		/*var img = Ti.UI.createImageView({
-			image: this.thisObject.imgurl,
-			left: 0,
-			width: '100%',
-			heigth: '50%',
-		});*/
+		function ImgBalkImageView(thisObject){
+			
+			//create object instance, parasitic subclass of Observable
+			var self = Ti.UI.createImageView({
+				backgroundImage:'ui/common/img/product/Balk.png',
+				right: '0%',
+				top: '60%',
+				height: '25%',
+				width: '55%'
+				
+			});
+			
+			var name = Ti.UI.createLabel({
+				name: thisObject.name,
+				
+				
+			});
+			var buyable = thisObject.buyable;
+			if(buyable == 1)
+			{		
+			var BuyableFlag = Ti.UI.createImageView({
+				image: 'ui/common/img/product/BuyableFlag.png',
+				height: '100%',
+				right: '-37%'
+			});
+			}else{
+				var BuyableFlag = Ti.UI.createImageView({
+					image: 'none'
+				});
+			}
+			self.add(BuyableFlag);
+			self.add(name);
+				
+			return self;
+		};
 		
-		var imgBalk = Ti.UI.createImageView({
-		image: 'ui/common/img/product/Balk.png',
-		top: '20%',
-		bottom: '40%'
-	});
-		
-		var text = Ti.UI.createLabel({
-			text: this.thisObject.text,
-			right: '40%',
-			top: '50%'
-		});
+		module.exports = ImgBalkImageView;
+		var imgBalk = new ImgBalkImageView(this.thisObject);
 		
 		newRow.addEventListener('click', function(e){
-			var productsDataVar = require('ui/common/product/bureaustoel/'+ e.row.name);
+			var productsDataVar = require('ui/common/product/productDetail/ProductDetailWindow');
 			var productsData = new productsDataVar();
 			productsData.open();
 		});
 
-		//newRow.add(img),
+		
 		newRow.add(imgBalk),
-		newRow.add(text),
 		tableData.push(newRow);
 		
 	}
@@ -82,14 +95,10 @@ function Bureaustoel(){
 	
 	self.add(productTableView);
 	
-	/*var viewSelfie = Ti.UI.createView({
-		top: 0,
-		backgroundColor: 'white'
+	Ti.App.addEventListener('resetproducten', function(data){
+		Titanium.API.log('listen 1');
+		self.setVisible(false);
 	});
-	
-	var text = Ti.UI.createLabel({text: 'Bureau', top: 20, left:30});
-	viewSelfie.add(text);
-	self.add(viewSelfie);*/
 	
 	return self;
 };

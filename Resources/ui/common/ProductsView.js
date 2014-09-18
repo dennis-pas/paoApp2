@@ -21,10 +21,10 @@ function ProductsView(){
 	
 	var arr =	[	
 				{ID: 1,imgurl: 'ui/common/img/product/James.jpg', text: 'BureauStoel', catergorie: 'Bureaustoel'},
-				{ID: 2,imgurl: 'ui/common/img/product/CatergorieTest.png', text: 'Banken', catergorie: 'Banken' },
-				{ID: 3,imgurl: 'ui/common/img/product/CatergorieTest.png', text: 'Kasten', catergorie: 'Kasten' },
-				{ID: 4,imgurl: 'ui/common/img/product/CatergorieTest.png', text: 'School', catergorie: 'School' },
-				{ID: 5,imgurl: 'ui/common/img/product/CatergorieTest.png', text: 'Overig', catergorie: 'Overig'},
+				{ID: 2,imgurl: 'ui/common/img/product/James.jpg', text: 'Banken', catergorie: 'Banken' },
+				{ID: 3,imgurl: 'ui/common/img/product/James.jpg', text: 'Kasten', catergorie: 'Kasten' },
+				{ID: 4,imgurl: 'ui/common/img/product/James.jpg', text: 'School', catergorie: 'School' },
+				{ID: 5,imgurl: 'ui/common/img/product/James.jpg', text: 'Overig', catergorie: 'Overig'},
 				];
 				
 	var Producten = {};
@@ -39,48 +39,51 @@ function ProductsView(){
 			width: 256
 		});
 		
-		var buyable = this.thisObject.buyable;
-		if(buyable == 1){
-			
-		}else{
-			
-		}
 		
 		newRow.cat = this.thisObject.catergorie;
 		
-		/*var img = Ti.UI.createImageView({
-			image: this.thisObject.imgurl
-		});*/
+		function ImgBalkImageView(thisObject){
+			
+			//create object instance, parasitic subclass of Observable
+			var self = Ti.UI.createImageView({
+				backgroundImage:'ui/common/img/product/Balk.png',
+				right: '0%',
+				top: '60%',
+				height: '25%',
+				width: '55%'
+				
+			});
+			
+			var text = Ti.UI.createLabel({
+				text: thisObject.text,
+				
+				
+			});
+			
+			var BuyableFlag = Ti.UI.createImageView({
+				image: 'ui/common/img/product/BuyableFlag.png',
+				height: '100%',
+				right: '-37%'
+			});
+			self.add(BuyableFlag);
+			self.add(text);
+				
+			return self;
+		};
 		
-		var imgBalk = Ti.UI.createImageView({
-		image: 'ui/common/img/product/Balk.png',
-		top: '40%',
-		bottom: '40%'
-	});
-		
-		var text = Ti.UI.createLabel({
-			text: this.thisObject.text,
-			right: '40%',
-			top: '50%'
-		});
+		module.exports = ImgBalkImageView;
+		var imgBalk = new ImgBalkImageView(this.thisObject);
 		
 		newRow.addEventListener('click', function(e){
 			var productsDataVar = require('ui/common/product/cat/'+ e.row.cat);
 			var productsData = new productsDataVar();
-			productsData.open();
-			/*
-			Producten["Listener_" + e.row.cat] = require('ui/common/product/cat/'+ e.row.cat);
-			Producten["listener_" + e.row.cat] = new Producten["Listener" + e.row.cat]();
-			Producten["listener_" + e.row.cat].open();*/
-			/**
-			 * var productsDataVar = require('Data/Products');
-	var productsData = new productsDataVar();
-			 */
+			self.add(productsData);
+			//self.setVisible(false);
+			//productsData.open();
 		});
 
-		//newRow.add(img),
+		
 		newRow.add(imgBalk),
-		newRow.add(text),
 		tableData.push(newRow);
 		
 	}
