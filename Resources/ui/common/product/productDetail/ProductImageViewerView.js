@@ -16,12 +16,13 @@ function ProductImageViewerView(){
 	var length = length - 1;
 	var self = Ti.UI.createImageView({
 		top: '0%',
+		
 		bottom: '10%',
 		image: imgToView.url
 	});
 	
 	self.addEventListener('swipe', function(e){
-		if(e.direction == 'right')
+		if(e.direction == 'left')
 		{
 			if( placeOfPhoto < length)
 			{
@@ -32,7 +33,7 @@ function ProductImageViewerView(){
 			{
 				imgToView = arr[placeOfPhoto];
 			}
-		} else if(e.direction == 'left')
+		} else if(e.direction == 'right')
 		{
 			if (placeOfPhoto > 0)
 			{

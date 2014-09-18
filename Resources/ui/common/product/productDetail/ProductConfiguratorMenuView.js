@@ -3,6 +3,8 @@
  */
 function ProductConfiguratorView(){
 
+	var ConfiguratorView = require('ui/common/product/productDetail/ProductDetailConfiguratorView');
+	
 	var self = Ti.UI.createView({
 		top: '90%',
 		backgroundColor: 'purple'
@@ -13,7 +15,12 @@ function ProductConfiguratorView(){
 	
 	self.add(test);
 	
-	
+	self.addEventListener('swipe', function(e){
+		if(e.direction == 'up')
+		{
+			
+		}
+	});
 	return self;
 	
 }
