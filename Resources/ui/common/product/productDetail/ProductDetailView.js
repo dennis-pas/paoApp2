@@ -6,10 +6,10 @@ function ProductDetailView(){
 	
 	
 	var ProductImageViewerView = require('ui/common/product/productDetail/ProductImageViewerView');
-	var ProductConfiguratorView = require('ui/common/product/productDetail/ProductConfiguratorView');
+	//var ProductConfiguratorView = require('ui/common/product/productDetail/ProductConfiguratorView');
 	
 	var productImageViewerView = new ProductImageViewerView();
-	var productConfiguratorView = new ProductConfiguratorView();
+	//var productConfiguratorView = new ProductConfiguratorView();
 
 	//create object instance, parasitic subclass of Observable
 	var self = Ti.UI.createView({
@@ -28,7 +28,7 @@ function ProductDetailView(){
 	});
 	
 	self.add(test);
-	self.add(productConfiguratorView);
+	//self.add(productConfiguratorView);
 	self.add(productImageViewerView);
 	
 	return self;
