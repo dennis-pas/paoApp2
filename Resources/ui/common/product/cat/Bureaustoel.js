@@ -48,7 +48,7 @@ function Bureaustoel(){
 			});
 			
 			var name = Ti.UI.createLabel({
-				name: thisObject.name,
+				text: thisObject.name,
 				
 				
 			});
