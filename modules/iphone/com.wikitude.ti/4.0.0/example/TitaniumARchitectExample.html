@@ -1,0 +1,44 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="viewport" content="target-densitydpi=device-dpi, width = 540, user-scalable = 0" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>My ARchitect World</title>
+
+<!-- Include the ARchitect library -->
+<script src="architect://architect.js"></script>
+
+
+<script>
+
+function createCircle()
+{
+	AR.logger.activateDebugMode();
+	
+
+	var circle = new AR.Circle(2, {style: {fillColor: '#8F45FF'}, onClick: function(){
+		document.location = 'architectsdk://sayHello';
+	}});
+
+	var drawableLocation = new AR.RelativeLocation(null, 10, 0);
+	var geoObject = new AR.GeoObject(drawableLocation, {drawables: {cam: circle}});
+
+	AR.logger.info("circle created");
+}
+
+
+</script>
+</head>
+
+<body>
+<!--
+HTML Body will be displayed on top of the Augmented Reality view.
+A transparent background allows the AR content to be visible.
+-->
+
+<button value="Create ARchitectObj" type="button" onclick="createCircle()">Create Circle</button>
+
+<script>createCircle()</script>
+</body>
+</html>

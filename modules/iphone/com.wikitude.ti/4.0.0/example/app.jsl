@@ -1,0 +1,37 @@
+/* NOTE: This example refers to the ARchitect World 'TitaniumARchitectExample.html' which is part of the module. Depending on the final application bundle, the path may differ and has to be adopted for the 'loadArchitectWorldFromURL' function */
+
+var window = Ti.UI.createWindow({
+    backgroundColor: '#fff'
+});
+
+var wikitude = require('com.wikitude.ti');
+var architectView = null;
+
+var isDeviceSupported = wikitude.isDeviceSupported("IrAndGeo");
+if (isDeviceSupported) {
+    architectView = wikitude.createWikitudeView({
+        "licenseKey": "MY_SDK_KEY",
+        "augmentedRealityMode": "IRAndGeo",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0
+    });
+    window.add(architectView);
+
+    /* setup some event listener */
+    architectView.addEventListener('WORLD_IS_LOADED', function(event) {
+        /* do some additional work after the world is loaded */
+    });
+    architectView.addEventListener('URL_WAS_INVOKED', function(event) {
+        /* respond to architectsdk:// urls by saying 'hello' */
+        if ('sayHello' === event.url.substring(15)) {
+            architectView.callJavaScript('alert(\'Hello!\');');
+        }
+    });
+
+    /* load the architectWorld */
+    architectView.loadArchitectWorldFromURL('TitaniumARchitectExample.html');
+}
+
+window.open();

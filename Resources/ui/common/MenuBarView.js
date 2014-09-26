@@ -45,13 +45,12 @@ function MenuBarView() {
 		customFont = 'Futura-Lt';
 	}
 	
-	
-	
 	//create settings img
 	var settings = Ti.UI.createImageView({
 		backgroundImage: '/ui/common/img/singletandwiel.png',
 		width: 20,
 		height: 20,
+		left: '0%'
 	});
 	
 	//create shoppingcart img
@@ -59,14 +58,13 @@ function MenuBarView() {
 		backgroundImage: shoppingcartimg,
 		width: 20,
 		height: 20,
+		left: '33%'
 	});
 	//create Label label
 	var label = Ti.UI.createLabel({
 		text:'PLAN@OFFICE',
 		color: '#ffffff',
 		font: {fontFamily: customFont, fontSize: '25'},
-		
-		left: '40%'
 	});
 	
 	//create QuestionCart img
@@ -75,21 +73,20 @@ function MenuBarView() {
 		width: 20,
 		height: 20,
 		right: 0,
-		left: '90%'
+		left: '66%'
 	});
-	
-	
-	
 	
 	//create toolbar
 	//button bar top
 	var toolBar = Ti.UI.iOS.createToolbar({
 		items:[label,settings,questionCart,shoppingcart],
 		top:0,
-		left: -10,
+		//left: '0%',
+		//right: '0%',
 		borderTop:false,
 		borderBottom:false,
-		barColor: 'Black'
+		barColor: 'Black',
+		center: 0
 		
 	});
 	
@@ -141,7 +138,8 @@ function MenuBarView() {
 	var toolBar2 = Ti.UI.iOS.createToolbar({
 		items:[home,producten,projecten,nieuws,info,],
 		top:theTopToolbar2,
-		left: -10,
+		left: '0%',
+		right: '0%',
 		bordertop:false,
 		borderBottom:true,
 		barColor: 'Black',
